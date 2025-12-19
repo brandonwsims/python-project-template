@@ -259,26 +259,24 @@ def process_data(data: list[str], max_items: int = 10) -> dict[str, int]:
 
 ### Docstrings
 
-Use Google-style docstrings:
+Use reStructuredText (reST) style docstrings following PEP 257:
 
 ```python
 def calculate_sum(a: int, b: int) -> int:
-    """
-    Calculate the sum of two numbers.
+    """Calculate the sum of two numbers.
 
-    Args:
-        a: First number
-        b: Second number
+    :param a: First number.
+    :type a: int
+    :param b: Second number.
+    :type b: int
+    :return: The sum of a and b.
+    :rtype: int
+    :raises ValueError: If inputs are not integers.
 
-    Returns:
-        The sum of a and b
+    :Example:
 
-    Raises:
-        ValueError: If inputs are not integers
-
-    Examples:
-        >>> calculate_sum(2, 3)
-        5
+    >>> calculate_sum(2, 3)
+    5
     """
     return a + b
 ```

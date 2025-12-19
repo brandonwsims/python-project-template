@@ -79,6 +79,8 @@ ignore = [
     "E501",  # line too long (handled by formatter)
     "PLR0913",  # too many arguments
     "PLR2004",  # magic value used in comparison
+    "D203",  # 1 blank line required before class docstring (conflicts with D211)
+    "D213",  # Multi-line docstring summary should start at the second line (conflicts with D212)
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -118,3 +120,12 @@ version_files = [
 tag_format = "v$version"
 update_changelog_on_bump = true
 annotated_tag = true
+
+[tool.pydocstyle]
+convention = "pep257"
+add-ignore = ["D203", "D213"]
+match = "(?!test_).*\\.py"
+match-dir = "^(?!(\\.venv|test|__pycache__|build|dist)).*"
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"

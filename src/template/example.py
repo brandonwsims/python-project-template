@@ -2,35 +2,34 @@
 
 
 def greet(name: str) -> str:
-    """
-    Generate a greeting message.
+    """Generate a greeting message.
 
-    Args:
-        name: The name of the person to greet.
+    :param name: The name of the person to greet.
+    :type name: str
+    :return: A greeting message string.
+    :rtype: str
 
-    Returns:
-        A greeting message string.
+    :Example:
 
-    Examples:
-        >>> greet("World")
-        'Hello, World!'
+    >>> greet("World")
+    'Hello, World!'
     """
     return f"Hello, {name}!"
 
 
 def add_numbers(a: int, b: int) -> int:
-    """
-    Add two numbers together.
+    """Add two numbers together.
 
-    Args:
-        a: First number.
-        b: Second number.
+    :param a: First number.
+    :type a: int
+    :param b: Second number.
+    :type b: int
+    :return: The sum of a and b.
+    :rtype: int
 
-    Returns:
-        The sum of a and b.
+    :Example:
 
-    Examples:
-        >>> add_numbers(2, 3)
-        5
+    >>> add_numbers(2, 3)
+    5
     """
     return a + b

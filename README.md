@@ -114,8 +114,9 @@ pre-commit run --all-files
 ## Configuration
 
 - **pyproject.toml**: Central configuration for project metadata, dependencies, and tools
-- **ruff**: Configured for 79 character line length with comprehensive rule set
+- **ruff**: Configured for 79 character line length with comprehensive rule set including pydocstyle
 - **ty**: Fast type checking with strict mode (Python 3.11+, Rust-based from Astral)
+- **pydocstyle**: Enforces reStructuredText (reST) docstring format (PEP 257)
 - **pytest**: Configured for src/test layout with coverage reporting
 - **bandit**: Security linting for Python code
 - **safety**: Dependency vulnerability scanning

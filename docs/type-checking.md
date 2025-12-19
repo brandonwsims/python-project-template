@@ -78,11 +78,15 @@ items: list[str] = []  # explicit type
 Use standard library types for Python 3.11+:
 
 ```python
-from typing import Optional  # Not needed in 3.11+
-
 # Modern approach (Python 3.11+)
 def find_user(user_id: int) -> dict[str, str] | None:
-    """Find a user by ID."""
+    """Find a user by ID.
+
+    :param user_id: The user's ID.
+    :type user_id: int
+    :return: User data dictionary or None if not found.
+    :rtype: dict[str, str] | None
+    """
     return None
 
 # Collections
@@ -90,7 +94,15 @@ def process_batch(
     items: list[dict[str, int]],
     mapping: dict[str, list[str]]
 ) -> tuple[int, int]:
-    """Process a batch of items."""
+    """Process a batch of items.
+
+    :param items: List of items to process.
+    :type items: list[dict[str, int]]
+    :param mapping: Mapping configuration.
+    :type mapping: dict[str, list[str]]
+    :return: Tuple of (processed_count, error_count).
+    :rtype: tuple[int, int]
+    """
     return (len(items), 0)
 ```
 
