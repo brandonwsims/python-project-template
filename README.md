@@ -60,6 +60,17 @@ pytest
 mypy src/
 ```
 
+### Security Scanning
+
+```bash
+# Run all security checks
+make security
+
+# Or run individually
+bandit -c pyproject.toml -r src/
+safety scan
+```
+
 ### Linting and Formatting
 
 ```bash
@@ -118,9 +129,26 @@ uv pip install <package>
 uv pip install <package>
 ```
 
+## Publishing to PyPI
+
+This template is configured for PyPI distribution. To publish:
+
+1. Update version in `pyproject.toml`
+2. Update author name and email
+3. Build the package:
+   ```bash
+   uv build
+   ```
+4. Publish to PyPI:
+   ```bash
+   uv publish
+   ```
+
+Or use the GitHub Actions workflow for automated publishing on releases.
+
 ## License
 
-[Choose your license]
+MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Contributing
 

@@ -30,7 +30,15 @@ echo ""
 # Update project name in pyproject.toml
 echo "📦 Updating pyproject.toml..."
 sed -i.bak "s/name = \"template\"/name = \"$PROJECT_NAME\"/" pyproject.toml
+sed -i.bak "s/Your Name/$AUTHOR_NAME/g" pyproject.toml
+sed -i.bak "s/your.email@example.com/$AUTHOR_EMAIL/g" pyproject.toml
+sed -i.bak "s/A template Python project/$PROJECT_DESC/" pyproject.toml
 rm pyproject.toml.bak
+
+# Update LICENSE file
+echo "📄 Updating LICENSE..."
+sed -i.bak "s/\[Your Name\]/$AUTHOR_NAME/" LICENSE
+rm LICENSE.bak
 
 # Rename src/template to src/$PROJECT_NAME
 echo "📁 Renaming package directory..."

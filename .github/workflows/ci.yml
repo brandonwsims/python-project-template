@@ -43,6 +43,15 @@ jobs:
         run: |
           mypy src/
 
+      - name: Run security scan (Bandit)
+        run: |
+          bandit -c pyproject.toml -r src/
+
+      - name: Run dependency security check (Safety)
+        run: |
+          safety scan --output json
+        continue-on-error: true
+
       - name: Run tests
         run: |
           pytest --cov-report=xml

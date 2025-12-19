@@ -27,6 +27,12 @@ format:
 typecheck:
 	mypy src/template/
 
+security:
+	@echo "Running Bandit security scan..."
+	bandit -c pyproject.toml -r src/
+	@echo "Running Safety dependency check..."
+	safety scan --output json || true
+
 pre-commit:
 	pre-commit run --all-files
 
