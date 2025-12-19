@@ -18,9 +18,16 @@ Welcome to the project documentation!
 ### Reference Documents
 - [Changes Complete](CHANGES_COMPLETE.md) - Initial setup changes
 - [Follow Up](FOLLOW_UP.md) - Implementation details
-- [REST Docstrings](../REST_DOCSTRINGS.md) - reStructuredText docstring style guide
-- [Final Changes](../FINAL_CHANGES.md) - Recent dependency and workflow updates
-- [Correction: ty](../CORRECTION_TY.md) - Switch from pyright to ty
+
+### Guides
+- [REST Docstrings](guides/REST_DOCSTRINGS.md) - reStructuredText docstring style guide
+
+### Change History
+- [Final Changes](changes/FINAL_CHANGES.md) - Recent dependency and workflow updates
+- [Correction: ty](changes/CORRECTION_TY.md) - Switch from pyright to ty
+- [Documentation Update](changes/DOCUMENTATION_UPDATE.md) - Documentation update summary
+- [Changes Summary](changes/CHANGES_SUMMARY.md) - Complete summary of all additions
+- [Updates 2025-12-18](changes/UPDATES_2025-12-18.md) - Technical changes detail
 
 ## 🚀 Quick Start
 

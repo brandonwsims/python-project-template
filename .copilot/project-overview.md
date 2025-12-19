@@ -298,3 +298,64 @@ This is a comprehensive Python project template designed to provide a production
 ## Project Purpose
 
 
+## Documentation Organization for AI Agents
+**CRITICAL GUIDELINES**: When creating documentation, especially completion summaries:
+### Root Directory Rules
+Only these markdown files belong in the root:
+- `README.md` - Main project documentation
+- `CONTRIBUTING.md` - Contribution guidelines  
+- `LICENSE` - Project license
+### docs/ Organization
+All other documentation must go in `docs/` with proper subfolder organization:
+#### docs/ (main documentation)
+Core reference documents:
+- `README.md` - Documentation index (update with new docs!)
+- `TEMPLATE_USAGE.md` - How to use this template
+- `SETUP_SUMMARY.md` - What's configured
+- `type-checking.md`, `versioning.md` - Development guides
+- `CHANGES_COMPLETE.md`, `FOLLOW_UP.md` - Historical reference
+#### docs/guides/ (how-to and references)
+- Style guides (e.g., `REST_DOCSTRINGS.md`)
+- Implementation guides
+- Best practices documents
+- Tutorial content
+#### docs/changes/ (change history)
+- Version update summaries
+- Migration guides  
+- Change documentation
+- Completion summaries from AI sessions
+#### docs/{task-name}/ (task-specific)
+For complex tasks, create dedicated subfolders:
+```
+docs/security-audit-2025-12/
+├── README.md           # Overview
+├── findings.md         # Results
+├── decisions.md        # Design choices
+├── implementation.md   # How it was done
+└── testing.md          # Verification
+```
+### Guidelines for Creating Documentation
+1. **Never create .md files in root** (except the 3 standard ones)
+2. **Always use appropriate subfolder** based on content type
+3. **Create task-specific folders** for complex work
+4. **Update docs/README.md** with links to new docs
+5. **Use descriptive folder names** with dates (e.g., `performance-2025-12`)
+6. **Organize by purpose** not document type
+7. **Keep navigation clear** with README.md in each subfolder
+### Task-Specific Documentation Pattern
+When completing a task:
+```
+docs/{task-name}/
+├── README.md           # Summary and overview
+├── decisions.md        # Why choices were made
+├── implementation.md   # How it was implemented
+├── testing.md          # Testing approach
+└── migration.md        # How to adopt changes (if applicable)
+```
+### Common Task Folder Examples
+- `docs/security-audit-YYYY-MM/` - Security work
+- `docs/performance-optimization-YYYY-MM/` - Performance improvements
+- `docs/feature-{name}/` - New feature documentation
+- `docs/refactor-{component}/` - Refactoring documentation
+- `docs/upgrade-{tool}/` - Tool upgrade documentation
+**REMEMBER**: Clean documentation structure makes the project professional and maintainable!
