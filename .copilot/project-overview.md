@@ -26,7 +26,7 @@ This is a comprehensive Python project template designed to provide a production
 ## Project Structure
 
 ```
-template/
+./
 ├── .copilot/                  # Project context for AI assistants
 ├── .github/workflows/          # CI/CD workflows
 │   └── ci.yml                 # Multi-platform testing (Python 3.11-3.13)

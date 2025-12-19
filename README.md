@@ -119,12 +119,34 @@ cz changelog
 ## Project Structure
 
 ```
-.
-├── src/                    # Source code
-│   └── __init__.py
-├── test/                   # Test files
-│   └── __init__.py
-└── pyproject.toml          # Project configuration
+./
+├── .copilot/                  # Project context for AI assistants
+├── .github/workflows/          # CI/CD workflows
+│   └── ci.yml                 # Multi-platform testing (Python 3.11-3.13)
+├── docs/                      # All documentation (organized)
+│   ├── rest-docstrings.md     # Conventional commits guide
+│   ├── type-checking.md       # ty usage guide
+│   ├── versioning.md          # Conventional commits guide
+│   ├── guides/                # How-to guides and references
+│   └── changes/               # Change history and summaries
+├── src/template/              # Source code (src layout)
+│   ├── __init__.py            # Package init with __version__
+│   ├── example.py             # Example with reST docstrings
+│   └── py.typed               # PEP 561 marker
+├── test/                      # Test files (separate from src)
+│   ├── __init__.py
+│   ├── test_example.py
+│   └── test_example_module.py
+├── .editorconfig               # Editor consistency
+├── .gitignore                 # Comprehensive Python gitignore
+├── .pre-commit-config.yaml     # Pre-commit hooks configuration
+├── .python-version            # Python 3.11
+├── CONTRIBUTING.md            # Contribution guidelines
+├── LICENSE                    # License
+├── Makefile                    # Convenient command shortcuts
+├── pyproject.toml             # Central configuration
+├── README.md                  # Main documentation
+└── uv.lock                    # Dependency lock file
 ```
 
 ## Configuration
