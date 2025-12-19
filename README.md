@@ -129,6 +129,9 @@ pre-commit run --all-files
 ```bash
 # Add to pyproject.toml [project.dependencies]
 uv pip install <package>
+
+# Update lock file
+uv lock
 ```
 
 ### Development Dependencies
@@ -136,24 +139,11 @@ uv pip install <package>
 ```bash
 # Add to pyproject.toml [project.optional-dependencies.dev]
 uv pip install <package>
+
+# Update lock file
+uv lock
 ```
 
-## Publishing to PyPI
-
-This template is configured for PyPI distribution. To publish:
-
-1. Update version in `pyproject.toml`
-2. Update author name and email
-3. Build the package:
-   ```bash
-   uv build
-   ```
-4. Publish to PyPI:
-   ```bash
-   uv publish
-   ```
-
-Or use the GitHub Actions workflow for automated publishing on releases.
 
 ## License
 
