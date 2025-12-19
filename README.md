@@ -22,14 +22,19 @@ A modern Python project template following best practices and PEP guidelines.
 
 ### Prerequisites
 
-- Python 3.10 or higher
+- Python 3.11 or higher
 - [uv](https://github.com/astral-sh/uv) installed
+- [make](https://makefiletutorial.com/) installed
 
 ### Installation
 
 1. Create a virtual environment:
    ```bash
-   python -m venv .venv
+   # Defaults to .venv in the current directory
+   uv venv
+
+   # Or if you prefer a different name
+   uv venv {name-of-venv}
    ```
 
 2. Activate the virtual environment:
@@ -41,14 +46,9 @@ A modern Python project template following best practices and PEP guidelines.
    .venv\Scripts\activate
    ```
 
-3. Install dependencies using uv:
+3. Install dependencies:
    ```bash
-   uv pip install -e ".[dev]"
-   ```
-
-4. Install pre-commit hooks:
-   ```bash
-   pre-commit install
+   make install
    ```
 
 ## Development
@@ -56,13 +56,19 @@ A modern Python project template following best practices and PEP guidelines.
 ### Running Tests
 
 ```bash
-pytest
+make test
 ```
 
 ### Type Checking
 
 ```bash
-mypy src/
+make typecheck
+```
+
+### Docstring Style Checking
+
+```bash
+make docstyle
 ```
 
 ### Security Scanning
@@ -80,7 +86,7 @@ safety scan
 
 ```bash
 # Check for issues
-ruff check .
+make lint
 
 # Fix issues automatically
 ruff check --fix .
@@ -97,24 +103,40 @@ Pre-commit hooks will automatically run on `git commit`. To run manually:
 pre-commit run --all-files
 ```
 
+### Committing Changes
+Use commitizen for conventional commits:
+
+```bash
+cz commit
+```
+
+### Release New Version
+
+```bash
+cz bump
+```
+
+### Update CHANGELOG
+
+```bash
+cz changelog
+```
+
 ## Project Structure
 
 ```
 .
-├── src/                # Source code
+├── src/                    # Source code
 │   └── __init__.py
-├── test/               # Test files
+├── test/                   # Test files
 │   └── __init__.py
-├── .gitignore          # Git ignore patterns
-├── .pre-commit-config.yaml  # Pre-commit configuration
-├── pyproject.toml      # Project configuration
-└── README.md           # This file
+└── pyproject.toml          # Project configuration
 ```
 
 ## Configuration
 
 - **pyproject.toml**: Central configuration for project metadata, dependencies, and tools
-- **ruff**: Configured for 79 character line length with comprehensive rule set including pydocstyle
+- **ruff**: Configured for [79 character line length](https://peps.python.org/pep-0008/#maximum-line-length) with comprehensive rule set including pydocstyle
 - **ty**: Fast type checking with strict mode (Python 3.11+, Rust-based from Astral)
 - **pydocstyle**: Enforces reStructuredText (reST) docstring format (PEP 257)
 - **pytest**: Configured for src/test layout with coverage reporting
@@ -129,7 +151,7 @@ pre-commit run --all-files
 
 ```bash
 # Add to pyproject.toml [project.dependencies]
-uv pip install <package>
+uv add <package>
 
 # Update lock file
 uv lock
@@ -139,7 +161,7 @@ uv lock
 
 ```bash
 # Add to pyproject.toml [project.optional-dependencies.dev]
-uv pip install <package>
+uv add --dev <package>
 
 # Update lock file
 uv lock
