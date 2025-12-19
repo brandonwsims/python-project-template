@@ -41,7 +41,7 @@ jobs:
 
       - name: Run type checking
         run: |
-          mypy src/
+          pyright
 
       - name: Run security scan (Bandit)
         run: |

@@ -25,12 +25,13 @@ dependencies = []
 dev = [
     "pytest>=8.0.0,<9.0.0",
     "pytest-cov>=4.1.0,<6.0.0",
-    "mypy>=1.7.0,<2.0.0",
     "ruff>=0.8.0,<1.0.0",
     "pre-commit>=3.5.0,<5.0.0",
     "safety>=3.0.0,<4.0.0",
     "bandit>=1.7.0,<2.0.0",
     "pydantic>=2.0.0,<3.0.0",
+    "commitizen>=3.0.0,<4.0.0",
+    "pyright>=1.1.0,<2.0.0",
 ]
 
 [build-system]
@@ -92,37 +93,13 @@ quote-style = "double"
 indent-style = "space"
 line-ending = "auto"
 
-[tool.mypy]
-python_version = "3.11"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_no_return = true
-follow_imports = "normal"
-strict_optional = true
-strict_equality = true
-show_error_codes = true
-show_column_numbers = true
-ignore_missing_imports = false
-namespace_packages = true
-explicit_package_bases = true
-mypy_path = "src"
-exclude = [
-    "^\\.venv/",
-    "^build/",
-    "^dist/",
-]
-
-[[tool.mypy.overrides]]
-module = "test.*"
-disallow_untyped_defs = false
-disallow_incomplete_defs = false
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__", ".venv", "build", "dist"]
+pythonVersion = "3.11"
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportMissingTypeStubs = false
 
 [tool.bandit]
 exclude_dirs = ["test", ".venv", "build", "dist"]
@@ -130,3 +107,14 @@ skips = ["B101"]
 
 [tool.bandit.assert_used]
 skips = ["**/test_*.py", "**/test/**/*.py"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+version_files = [
+    "pyproject.toml:version",
+    "src/template/__init__.py:__version__"
+]
+tag_format = "v$version"
+update_changelog_on_bump = true
+annotated_tag = true

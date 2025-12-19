@@ -6,7 +6,7 @@ help:
 	@echo "  make test        - Run tests with pytest"
 	@echo "  make lint        - Run ruff linter"
 	@echo "  make format      - Format code with ruff"
-	@echo "  make typecheck   - Run mypy type checker"
+	@echo "  make typecheck   - Run pyright type checker"
 	@echo "  make pre-commit  - Run pre-commit hooks on all files"
 	@echo "  make clean       - Remove build artifacts and cache"
 
@@ -25,7 +25,7 @@ format:
 	ruff check --fix .
 
 typecheck:
-	mypy src/template/
+	pyright
 
 security:
 	@echo "Running Bandit security scan..."
@@ -35,6 +35,12 @@ security:
 
 pre-commit:
 	pre-commit run --all-files
+
+bump:
+	cz bump --changelog
+
+changelog:
+	cz changelog
 
 clean:
 	rm -rf build/

@@ -2,16 +2,21 @@
 
 A modern Python project template following best practices and PEP guidelines.
 
-> **📝 Using this as a template?** See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for detailed instructions on how to create a new project from this template.
+> **📝 Using this as a template?** See [docs/TEMPLATE_USAGE.md](docs/TEMPLATE_USAGE.md) for detailed instructions on how to create a new project from this template.
 
 ## Features
 
 - 📦 **uv** for fast, reliable package management
-- 🧪 **pytest** for testing
-- 🔍 **mypy** for static type checking
+- 🧪 **pytest** for testing with coverage
+- ⚡ **ty** for blazing-fast type checking (Rust-based)
 - 🎨 **ruff** for linting and formatting (79 character line length)
-- 🪝 **pre-commit** hooks for code quality
+- 🔒 **bandit** for security scanning
+- 🛡️ **safety** for dependency vulnerability checking
+- 📊 **pydantic** for data validation
+- 📝 **commitizen** for conventional commits and version management
+- 🪝 **pre-commit** hooks for automated quality checks
 - 📁 **src/test** layout for clean project structure
+- 📄 **MIT License** included
 
 ## Setup
 
@@ -110,8 +115,12 @@ pre-commit run --all-files
 
 - **pyproject.toml**: Central configuration for project metadata, dependencies, and tools
 - **ruff**: Configured for 79 character line length with comprehensive rule set
-- **mypy**: Strict type checking enabled
+- **pyright**: Fast type checking with strict mode (Python 3.11+)
 - **pytest**: Configured for src/test layout with coverage reporting
+- **bandit**: Security linting for Python code
+- **safety**: Dependency vulnerability scanning
+- **pydantic**: Available for data validation (v2.x)
+- **commitizen**: Conventional commits and version management
 
 ## Adding Dependencies
 
@@ -152,7 +161,12 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-1. Create a new branch for your feature
-2. Make your changes
-3. Run tests and ensure pre-commit hooks pass
-4. Submit a pull request
+1. Read the [Contributing Guide](CONTRIBUTING.md)
+2. Follow conventional commits format
+3. Create a new branch for your feature
+4. Make your changes with tests
+5. Run quality checks: `make lint format typecheck security`
+6. Commit using `cz commit` or conventional format
+7. Push and submit a pull request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.

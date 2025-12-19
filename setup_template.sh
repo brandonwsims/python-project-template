@@ -53,6 +53,7 @@ find test -name "*.py.bak" -type f -delete
 # Update pyproject.toml package path
 sed -i.bak "s/packages = \[\"src\/template\"\]/packages = [\"src\/$PROJECT_NAME\"]/" pyproject.toml
 sed -i.bak "s/--cov=template/--cov=$PROJECT_NAME/" pyproject.toml
+sed -i.bak "s/src\/template\/__init__.py/src\/$PROJECT_NAME\/__init__.py/g" pyproject.toml
 rm pyproject.toml.bak
 
 # Update Makefile
