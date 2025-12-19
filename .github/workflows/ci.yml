@@ -55,10 +55,3 @@ jobs:
       - name: Run tests
         run: |
           pytest --cov-report=xml
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
-        with:
-          file: ./coverage.xml
-          fail_ci_if_error: false
