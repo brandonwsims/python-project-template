@@ -13,18 +13,6 @@ This project uses [ty](https://github.com/astral-sh/ty), a fast type checker fro
 
 Type checking is configured in `pyproject.toml`:
 
-```toml
-[tool.pyright]
-include = ["src"]
-exclude = ["**/__pycache__", ".venv", "build", "dist"]
-pythonVersion = "3.11"
-typeCheckingMode = "strict"
-reportMissingImports = true
-reportMissingTypeStubs = false
-```
-
-ty uses Pyright under the hood, so the configuration follows Pyright's format.
-
 ## Running Type Checks
 
 ### Command Line
@@ -176,13 +164,6 @@ If you get errors about missing type stubs for third-party libraries:
 uv pip install types-requests
 ```
 
-Or configure ty to ignore them (via pyright configuration):
-
-```toml
-[tool.pyright]
-reportMissingTypeStubs = false
-```
-
 ### Type Ignores
 
 Use `# type: ignore` sparingly and only when necessary:
@@ -214,18 +195,8 @@ def process(value: Union[str, int]) -> bool:
 - It only checks files that have changed
 - Full project checks still take < 1 second for most projects
 
-## Comparison with mypy
-
-| Feature | ty | mypy |
-|---------|-----|------|
-| Speed | Very Fast (Rust) | Moderate (Python) |
-| Ecosystem | uv/ruff/ty | Standalone |
-| Configuration | Pyright-based | mypy-specific |
-| Strictness | Strict by default | Configurable |
-
 ## Further Reading
 
 - [ty GitHub Repository](https://github.com/astral-sh/ty)
-- [Pyright Documentation](https://github.com/microsoft/pyright)
 - [Python Type Hints PEP 484](https://www.python.org/dev/peps/pep-0484/)
 - [Python 3.11+ Type Features](https://docs.python.org/3/library/typing.html)

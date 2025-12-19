@@ -2,33 +2,7 @@
 
 This document explains how to use this Python project template to create new projects.
 
-## Method 1: Using the Setup Script (Recommended)
-
-The easiest way to use this template is with the provided setup script:
-
-```bash
-# 1. Copy this template directory to your new project location
-cp -r template /path/to/your-new-project
-cd /path/to/your-new-project
-
-# 2. Run the setup script
-./setup_template.sh
-
-# 3. Follow the prompts and enter your project name
-```
-
-The script will automatically:
-- Update all references from "template" to your project name
-- Rename the package directory
-- Update import statements in tests
-- Configure build settings
-- Remove the old git repository
-
-Then follow the "Next steps" instructions printed by the script.
-
-## Method 2: Manual Setup
-
-If you prefer to set things up manually:
+## Manual Setup
 
 ### Step 1: Copy Template
 ```bash
@@ -54,10 +28,6 @@ In all test files (`test/*.py`), update:
 - `from template.` → `from your_project_name.`
 - `import template` → `import your_project_name`
 
-### Step 5: Update Makefile
-
-Change `mypy src/template/` to `mypy src/your_project_name/`
-
 ### Step 6: Initialize Your Project
 
 ```bash
@@ -65,7 +35,7 @@ Change `mypy src/template/` to `mypy src/your_project_name/`
 rm -rf .git
 
 # Create virtual environment (if not already created)
-python -m venv .venv
+uv venv
 
 # Activate virtual environment
 source .venv/bin/activate  # On macOS/Linux
@@ -73,13 +43,10 @@ source .venv/bin/activate  # On macOS/Linux
 .venv\Scripts\activate  # On Windows
 
 # Install dependencies
-uv pip install -e ".[dev]"
+make install
 
 # Initialize new git repository
 git init
-
-# Install pre-commit hooks
-pre-commit install
 
 # Make first commit
 git add -A
@@ -91,12 +58,12 @@ git commit -m "Initial commit"
 ### Adding Dependencies
 
 #### Runtime Dependencies
-1. Add the package name to `dependencies` in `pyproject.toml`
-2. Run: `uv pip install -e ".[dev]"`
+1. `uv add package_name`
+2. `uv lock`
 
 #### Development Dependencies
-1. Add the package name to `dev` in `[project.optional-dependencies]` in `pyproject.toml`
-2. Run: `uv pip install -e ".[dev]"`
+1. `uv add --dev package_name`
+2. `uv lock`
 
 ### Project Structure
 
@@ -111,53 +78,7 @@ your_project/
 │   └── test_*.py            # Test modules
 ├── pyproject.toml           # Project configuration
 ├── README.md                # Project documentation
-├── .gitignore              # Git ignore patterns
-├── .pre-commit-config.yaml # Pre-commit hooks
-├── Makefile                # Common commands
 └── ...
-```
-
-### Configuration Files
-
-- **pyproject.toml**: Central configuration for project metadata, dependencies, and all tools
-- **ruff**: Linting and formatting (79 character line length)
-- **mypy**: Type checking with strict settings
-- **pytest**: Testing with coverage reports
-- **pre-commit**: Automated code quality checks
-
-### Common Commands
-
-Using Make:
-```bash
-make help        # Show available commands
-make install     # Install dependencies
-make test        # Run tests
-make lint        # Run linter
-make format      # Format code
-make typecheck   # Run type checker
-make pre-commit  # Run all pre-commit hooks
-make clean       # Remove build artifacts
-```
-
-Using tools directly:
-```bash
-# Testing
-pytest
-pytest -v
-pytest test/test_specific.py
-
-# Linting
-ruff check .
-ruff check --fix .
-
-# Formatting
-ruff format .
-
-# Type checking
-mypy src/your_project_name/
-
-# Pre-commit
-pre-commit run --all-files
 ```
 
 ## Best Practices
@@ -168,43 +89,10 @@ pre-commit run --all-files
 4. **Pre-commit hooks will run automatically** on `git commit`
 5. **Follow PEP 8** with 79 character line length (enforced by ruff)
 6. **Add type hints** to all functions (enforced by ty)
-7. **Write reST docstrings** for all public functions and classes
+7. **Write reST docstrings** for all public functions and classes (enforced by pydocstyle pep257)
 8. **Keep test coverage high** - aim for >80%
 9. **Update uv.lock** when adding dependencies: `uv lock`
 10. **Use make commands** for consistency
-
-## Troubleshooting
-
-### Pre-commit hooks fail
-
-```bash
-# Run hooks manually to see details
-pre-commit run --all-files
-
-# Update pre-commit hooks
-pre-commit autoupdate
-
-# Install commit-msg hook if missing
-pre-commit install --hook-type commit-msg
-```
-
-### Import errors in tests
-
-- Ensure you've installed the package: `uv pip install -e ".[dev]"`
-- Ensure you're using the correct virtual environment: `which python`
-- Check that package name matches in all files
-
-### Type checking issues
-
-- Make sure all functions have return type annotations
-- Use proper type hints for Python 3.11+ (e.g., `list[str]` not `List[str]`)
-- Check `ty check` output for specific errors
-
-### Docstring style errors
-
-- Ensure docstrings follow reST format (see `src/template/example.py` for examples)
-- Run `pydocstyle src/` to see specific issues
-- See `docs/guides/REST_DOCSTRINGS.md` for complete guide
 
 ## Template Features
 
