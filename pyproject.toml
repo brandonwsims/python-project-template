@@ -96,6 +96,8 @@ line-ending = "auto"
 
 [tool.ty.rules]
 root = ["./src"]
+
+[tool.ty.src]
 exclude = ["**/__pycache__", ".venv", "build", "dist"]
 
 [tool.bandit]
