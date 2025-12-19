@@ -30,9 +30,6 @@ format:
 typecheck:
 	ty check
 
-docstyle:
-	pydocstyle src/
-
 security:
 	@echo "Running Bandit security scan..."
 	bandit -c pyproject.toml -r src/

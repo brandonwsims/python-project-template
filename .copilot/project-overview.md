@@ -68,7 +68,6 @@ template/
 
 - **pytest** (v9.x): Testing framework
 - **pytest-cov** (v7.x): Coverage reporting
-- **pydocstyle** (v6.x): Docstring style enforcement (reST/PEP 257)
 
 ### Security
 
@@ -92,7 +91,7 @@ All tools configured in `pyproject.toml` following modern standards.
 - Python 3.11+ required
 - Version constraints: `>=X.Y.Z,<NEXT_MAJOR.0.0`
 - All dev dependencies with upper bounds to prevent breaking changes
-- Comprehensive tool configurations (ruff, ty/pyright, pytest, bandit, pydocstyle, commitizen)
+- Comprehensive tool configurations (ruff, ty, pytest, bandit, pydocstyle, commitizen)
 
 ### Ruff Configuration
 
@@ -225,7 +224,7 @@ make pre-commit
 When working on this project:
 - Keep documentation **synchronized** with code
 - Follow **conventional commits** for all changes
-- Test changes by running `make test lint typecheck docstyle`
+- Test changes by running `make test lint typecheck`
 - Version is managed by **commitizen** (don't manually update)
 - Lock file should be updated with: `uv lock`
 

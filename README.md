@@ -65,12 +65,6 @@ make test
 make typecheck
 ```
 
-### Docstring Style Checking
-
-```bash
-make docstyle
-```
-
 ### Security Scanning
 
 ```bash
@@ -178,7 +172,7 @@ MIT License - See [LICENSE](LICENSE) file for details.
 2. Follow conventional commits format
 3. Create a new branch for your feature
 4. Make your changes with tests
-5. Run quality checks: `make lint format typecheck docstyle security`
+5. Run quality checks: `make lint format typecheck security`
 6. Commit using `cz commit` or conventional format
 7. Push and submit a pull request
 

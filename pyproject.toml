@@ -63,6 +63,7 @@ src = ["src", "test"]
 
 [tool.ruff.lint]
 select = [
+    "D",     # pydocstyle
     "E",     # pycodestyle errors
     "W",     # pycodestyle warnings
     "F",     # pyflakes
@@ -112,11 +113,8 @@ tag_format = "v$version"
 update_changelog_on_bump = true
 annotated_tag = true
 
-[tool.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "pep257"
 add-ignore = ["D203", "D213"]
 match = "(?!test_).*\\.py"
 match-dir = "^(?!(\\.venv|test|__pycache__|build|dist)).*"
-
-[tool.ruff.lint.pydocstyle]
-convention = "pep257"

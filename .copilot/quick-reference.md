@@ -13,7 +13,6 @@ make test                    # Run tests
 make lint                    # Check with ruff
 make format                  # Format with ruff
 make typecheck              # Check types with ty
-make docstyle               # Check docstrings
 make security               # Run security scans
 make pre-commit             # Run all hooks
 
@@ -50,7 +49,6 @@ uv pip list --outdated      # Check outdated deps
 | pytest-cov | 7.x | Coverage |
 | ruff | 0.8.x | Lint + format |
 | ty | 0.0.4 | Type checking |
-| pydocstyle | 6.x | Docstring style |
 | bandit | 1.8.x | Security |
 | safety | 3.x | Vulnerabilities |
 | commitizen | 4.x | Versioning |
@@ -62,9 +60,7 @@ uv pip list --outdated      # Check outdated deps
 | Tool | Config Location |
 |------|----------------|
 | ruff | `[tool.ruff]` in pyproject.toml |
-| ty | `[tool.pyright]` in pyproject.toml |
 | pytest | `[tool.pytest.ini_options]` in pyproject.toml |
-| pydocstyle | `[tool.pydocstyle]` in pyproject.toml |
 | bandit | `[tool.bandit]` in pyproject.toml |
 | commitizen | `[tool.commitizen]` in pyproject.toml |
 
@@ -118,16 +114,6 @@ def function(param1: type1, param2: type2 = default) -> return_type:
 ```bash
 # Check configuration
 ty check
-# View pyright config
-grep -A 10 "\[tool.pyright\]" pyproject.toml
-```
-
-### Docstring Errors
-```bash
-# Check style
-pydocstyle src/
-# See examples
-cat src/template/example.py
 ```
 
 ### Pre-commit Hook Fails
@@ -222,7 +208,7 @@ ty check src/template/example.py
 
 Everything working:
 ```bash
-make test && make lint && make typecheck && make docstyle
+make test && make lint && make typecheck
 ```
 
 All checks passed = good to commit!
