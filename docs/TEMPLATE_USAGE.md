@@ -163,64 +163,102 @@ pre-commit run --all-files
 ## Best Practices
 
 1. **Always activate your virtual environment** before running commands
-2. **Run tests before committing**: `pytest`
-3. **Pre-commit hooks will run automatically** on `git commit`
-4. **Follow PEP 8** and the configured ruff rules
-5. **Add type hints** to all functions (mypy enforces this)
-6. **Write docstrings** for all public functions and classes
-7. **Keep test coverage high** - aim for >80%
+2. **Use conventional commits**: `cz commit` or follow the format manually
+3. **Run tests before committing**: `make test`
+4. **Pre-commit hooks will run automatically** on `git commit`
+5. **Follow PEP 8** with 79 character line length (enforced by ruff)
+6. **Add type hints** to all functions (enforced by ty)
+7. **Write reST docstrings** for all public functions and classes
+8. **Keep test coverage high** - aim for >80%
+9. **Update uv.lock** when adding dependencies: `uv lock`
+10. **Use make commands** for consistency
 
 ## Troubleshooting
 
 ### Pre-commit hooks fail
+
 ```bash
 # Run hooks manually to see details
 pre-commit run --all-files
 
 # Update pre-commit hooks
 pre-commit autoupdate
+
+# Install commit-msg hook if missing
+pre-commit install --hook-type commit-msg
 ```
 
 ### Import errors in tests
-- Ensure you've installed the package in editable mode: `uv pip install -e ".[dev]"`
-- Ensure you're using the correct virtual environment
+
+- Ensure you've installed the package: `uv pip install -e ".[dev]"`
+- Ensure you're using the correct virtual environment: `which python`
+- Check that package name matches in all files
 
 ### Type checking issues
+
 - Make sure all functions have return type annotations
-- Use `# type: ignore` comments sparingly and only when necessary
+- Use proper type hints for Python 3.11+ (e.g., `list[str]` not `List[str]`)
+- Check `ty check` output for specific errors
+
+### Docstring style errors
+
+- Ensure docstrings follow reST format (see `src/template/example.py` for examples)
+- Run `pydocstyle src/` to see specific issues
+- See `docs/guides/REST_DOCSTRINGS.md` for complete guide
 
 ## Template Features
 
-✅ **uv** for fast package management
-✅ **src/test layout** for clean structure
-✅ **pytest** with coverage reporting
-✅ **ruff** for linting and formatting (79 char line length)
-✅ **mypy** with strict type checking
-✅ **pre-commit hooks** for automated quality checks
-✅ **Comprehensive .gitignore**
-✅ **Makefile** for common tasks
-✅ **PEP-compliant** configuration
+✅ **uv** (latest) - Fast package management with lock file
+✅ **pytest** (v9.x) - Testing with coverage
+✅ **ty** (v0.0.4) - Blazing-fast type checking (Rust-based)
+✅ **ruff** (v0.8.x) - Linting and formatting (79 char line length)
+✅ **pydocstyle** (v6.x) - reStructuredText docstring enforcement
+✅ **bandit** (v1.8.x) - Security scanning
+✅ **safety** (v3.x) - Dependency vulnerability checking
+✅ **pydantic** (v2.x) - Data validation (available)
+✅ **commitizen** (v4.x) - Conventional commits and version management
+✅ **pre-commit** (v4.x) - Automated quality checks
+✅ **src/test layout** - Clean project structure
+✅ **PEP-compliant** - Follows Python standards
 
 ## Additional Considerations
 
 When starting a new project, you might also want to:
 
-1. **Choose a license** - Update or create a LICENSE file
+1. **Choose or update license** - Verify LICENSE file is appropriate
 2. **Update README.md** - Add project-specific information
-3. **Configure CI/CD** - A GitHub Actions workflow is included in `.github/workflows/ci.yml`. Update the `mypy src/` command to `mypy src/your_project_name/` in the workflow file. For GitLab CI or other platforms, adapt as needed.
-4. **Add project-specific tools** - Documentation generators, etc.
+3. **Configure CI/CD** - Update `.github/workflows/ci.yml` if needed
+4. **Add project-specific tools** - Documentation generators, APIs, etc.
 5. **Set up version control hosting** - GitHub, GitLab, Bitbucket
 6. **Configure issue templates** - For bug reports and feature requests
-7. **Add contributing guidelines** - CONTRIBUTING.md
+7. **Add security policy** - SECURITY.md for vulnerability reporting
 8. **Set up documentation** - Sphinx, MkDocs, etc.
+9. **Configure monitoring** - Error tracking, performance monitoring
+10. **Set up dependency updates** - Dependabot, Renovate
 
 ## Questions or Issues?
 
 If you encounter any problems with this template, please review:
+
 1. The main README.md
-2. Tool documentation:
+2. Documentation in `docs/`
+3. Tool documentation:
    - [uv](https://github.com/astral-sh/uv)
    - [ruff](https://docs.astral.sh/ruff/)
-   - [mypy](https://mypy.readthedocs.io/)
+   - [ty](https://github.com/astral-sh/ty)
    - [pytest](https://docs.pytest.org/)
    - [pre-commit](https://pre-commit.com/)
+   - [commitizen](https://commitizen-tools.github.io/commitizen/)
+   - [pydocstyle](http://www.pydocstyle.org/)
+
+## Next Steps
+
+After setup:
+
+1. Review and customize `README.md` for your project
+2. Update `CONTRIBUTING.md` with project-specific guidelines
+3. Start adding your code to `src/your_project_name/`
+4. Write tests in `test/`
+5. Use `cz commit` for all commits
+6. Run `make bump` when ready to release a new version
+7. Keep `docs/` updated with project documentation

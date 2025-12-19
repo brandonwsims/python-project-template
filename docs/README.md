@@ -34,8 +34,8 @@ Welcome to the project documentation!
 If you're using this template for a new project:
 
 1. **Read**: [Template Usage Guide](TEMPLATE_USAGE.md)
-2. **Run**: `./setup_template.sh`
-3. **Configure**: Follow the prompts
+2. **Copy**: Copy the template directory to your project location
+3. **Configure**: Follow the manual setup steps in the usage guide
 4. **Start coding**!
 
 ## 🛠️ Development Workflow

@@ -27,9 +27,8 @@ template/
 ├── MANIFEST.in                    # Package manifest
 ├── Makefile                       # Common development commands
 ├── README.md                      # Project documentation
-├── TEMPLATE_USAGE.md              # Template usage instructions
 ├── pyproject.toml                 # Central project configuration
-└── setup_template.sh              # Template setup script
+└── uv.lock                        # Dependency lock file
 ```
 
 ### 🛠️ Configured Tools
@@ -213,11 +212,11 @@ The template is highly customizable. You can:
 
 ### 📝 Notes
 
-- The template package is named "template" - rename it when creating new projects
-- Virtual environment (.venv) is already created but excluded from git
+- The template package is named "template" - manually rename it when creating new projects
+- Virtual environment (.venv) is excluded from git - create your own
 - All configuration is centralized in pyproject.toml
-- Pre-commit hooks are installed and will run on every commit
-- The setup_template.sh script automates most of the project initialization
+- Pre-commit hooks must be installed manually after setup
+- See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for complete setup instructions
 
 ---
 
