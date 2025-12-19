@@ -160,21 +160,11 @@ uv lock
 
 ```
 docs/
-├── README.md              # Index (update this!)
-├── TEMPLATE_USAGE.md      # How to use template
-├── SETUP_SUMMARY.md       # What's included
+├── rest-docstrings.md     # reST docstring guide
 ├── type-checking.md       # ty guide
 ├── versioning.md          # Commitizen guide
-├── CHANGES_COMPLETE.md    # History
-├── FOLLOW_UP.md           # Details
 ├── guides/                # How-to guides
-│   └── REST_DOCSTRINGS.md
 └── changes/               # Change history
-    ├── CHANGES_SUMMARY.md
-    ├── CORRECTION_TY.md
-    ├── FINAL_CHANGES.md
-    ├── UPDATES_2025-12-18.md
-    └── DOCUMENTATION_UPDATE.md
 ```
 
 ## Documentation Rules for AI Agents
@@ -182,7 +172,6 @@ docs/
 **Root .md files**: ONLY README.md, CONTRIBUTING.md, LICENSE
 **All other docs**: Must go in docs/ with proper subfolders
 **Task-specific**: Create docs/{task-name}/ for complex work
-**Always update**: docs/README.md when adding new docs
 
 ## Testing
 
@@ -237,4 +226,3 @@ make test && make lint && make typecheck && make docstyle
 ```
 
 All checks passed = good to commit!
-

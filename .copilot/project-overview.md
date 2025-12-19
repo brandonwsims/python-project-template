@@ -1,331 +1,273 @@
 # Python Project Template - Project Overview
-December 18, 2025
 
 ## Last Updated
 
-- Lock file should be updated with: `uv lock`
-- Version is managed by **commitizen** (don't manually update)
-- Test changes by running `make test lint typecheck docstyle`
-- Follow **conventional commits** for all changes
-- Keep documentation **synchronized** with code
-- Maintain **backward compatibility** in configuration
-- All changes should benefit **new projects** created from it
-- This is a **template**, not an application
-When working on this project:
-
-## Future Agent Context
-
-10. **Astral tools**: Faster, modern, Rust-based performance
-9. **Conventional commits**: Enable automated versioning
-8. **Pre-commit hooks**: Prevent bad code from being committed
-7. **Strict type checking**: Catch errors early
-6. **No PyPI auto-publish**: Per-project security decision
-5. **uv.lock committed**: Reproducible builds across environments
-4. **Version constraints**: Prevent breaking changes from major updates
-3. **reST docstrings**: Sphinx compatibility and tool support
-2. **79 char line length**: PEP 8 strict compliance
-1. **src/ layout**: Prevents accidental imports from working directory
-
-## Design Decisions
-
-```
-make pre-commit
-# Or
-make test lint typecheck docstyle security
-```bash
-### Running All Checks
-
-```
-git push && git push --tags
-make bump  # Analyze commits and bump version
-```bash
-### Releasing New Version
-
-```
-git push origin feature/my-feature
-cz commit  # Interactive conventional commit
-make lint format typecheck docstyle  # Run checks
-# Make changes
-git checkout -b feature/my-feature
-```bash
-### Making Changes
-
-```
-uv lock  # Update lock file
-uv pip install <package>
-# Add to pyproject.toml manually, then:
-```bash
-### Adding Dependencies
-
-## Common Workflows
-
-- **REST_DOCSTRINGS.md**: Complete reST docstring guide
-- **docs/**: All documentation organized in one place
-- **setup_template.sh**: Automated template setup script
-- **uv.lock**: Locked dependencies for reproducible builds
-- **pyproject.toml**: Central configuration for all tools
-- **CONTRIBUTING.md**: Detailed contribution guidelines with examples
-- **README.md**: Main documentation and quick start
-
-## Important Files
-
-7. Start coding!
-6. Install hooks: `pre-commit install && pre-commit install --hook-type commit-msg`
-5. Install dependencies: `uv pip install -e ".[dev]"`
-4. Script updates all references
-3. Enter project details (name, author, email, description)
-2. Run `./setup_template.sh`
-1. Copy template directory
-
-## Setup for New Projects
-
-- Additional testing strategies (integration, E2E, property-based)
-- Code coverage thresholds
-- Documentation generation (Sphinx, MkDocs, etc.)
-- Docker support
-- Environment variable management
-- Logging configuration
-- PyPI publishing workflow (removed - per-project decision)
-
-## Not Included (Per-Project Decisions)
-
-- **CI**: Both run in GitHub Actions
-- **Pre-commit**: Both run before commits
-- **safety**: Checks dependencies for known CVEs
-- **bandit**: Scans source code for security issues
-
-## Security
-
-  10. Upload coverage to Codecov (optional)
-  9. Run pytest (with coverage)
-  8. Run safety (vulnerability check)
-  7. Run bandit (security)
-  6. Run ty (type checking)
-  5. Run ruff (lint + format check)
-  4. Install dependencies
-  3. Install uv
-  2. Setup Python
-  1. Checkout code
-- **Steps**:
-- **Python versions**: 3.11, 3.12, 3.13
-- **Platforms**: Ubuntu, macOS, Windows
-
-**File**: `.github/workflows/ci.yml`
-
-## CI/CD
-
-```
-    return 42
-    """
-    42
-    >>> function_name("test")
-
-    :Example:
-
-    :raises ValueError: When this happens.
-    :rtype: int
-    :return: Description of return value.
-    :type param: str
-    :param param: Description of parameter.
-
-    Longer description if needed.
-
-    """Short one-line summary.
-def function_name(param: str) -> int:
-```python
-Example:
-
-**Format**: reStructuredText (reST)
-
-## Docstring Style
-
-- Creates annotated git tags
-- Generates CHANGELOG.md from commits
-- Updates `pyproject.toml` and `src/template/__init__.py`
-- Automatically determines version bump
-- Analyzes conventional commit messages
-Uses commitizen for semantic versioning:
-
-## Version Management
-
-- `make clean` - Remove build artifacts
-- `make pre-commit` - Run all pre-commit hooks
-- `make changelog` - Generate CHANGELOG.md
-- `make bump` - Bump version (commitizen)
-- `make security` - Run bandit + safety
-- `make docstyle` - Check docstring style
-- `make typecheck` - Run ty type checking
-- `make format` - Format code with ruff
-- `make lint` - Run ruff linter
-- `make test` - Run pytest with coverage
-- `make install` - Install dev dependencies
-
-## Makefile Commands
-
-- Auto-creates git tags
-- Auto-generates CHANGELOG.md
-- Version bumping: feat → MINOR, fix → PATCH, BREAKING CHANGE → MAJOR
-- Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore
-- Format: `<type>[scope]: <description>`
-### Conventional Commits (commitizen)
-
-13. Commitizen commit message validation (commit-msg hook)
-12. Pytest execution
-11. Bandit security scanning
-10. ty type checking
-9. Ruff formatting
-8. Ruff linting (with auto-fix)
-7. Debug statement detection
-6. Merge conflict detection
-5. TOML validation
-4. Large file checking
-3. YAML validation
-2. End-of-file fixing
-1. Trailing whitespace removal
-### Pre-commit Hooks
-
-- Enforced by both ruff (D rules) and pydocstyle
-- Sphinx-compatible
-- Format: reStructuredText (reST)
-- Convention: PEP 257
-### Docstrings (pydocstyle + ruff)
-
-- Strict markers and config
-- Reports: terminal, HTML, XML
-- Coverage for src/template/
-- Test path: test/
-### Testing (pytest)
-
-- Test files have relaxed type checking
-- Configured to check src/ directory
-- Python 3.11 target
-- Strict mode enabled
-### Type Checking (ty/Pyright)
-
-- Format: double quotes, spaces, auto line endings
-- Relaxed rules for test files
-- Rule sets: E, W, F, I (isort), B, C4, UP, ARG, SIM, PL, RUF, D (pydocstyle)
-- Target: Python 3.11
-- Line length: 79 characters (PEP 8 strict)
-### Ruff Configuration
-
-- Comprehensive tool configurations (ruff, ty/pyright, pytest, bandit, pydocstyle, commitizen)
-- All dev dependencies with upper bounds to prevent breaking changes
-- Version constraints: `>=X.Y.Z,<NEXT_MAJOR.0.0`
-- Python 3.11+ required
-### pyproject.toml
-
-## Configuration Highlights
-
-All tools configured in `pyproject.toml` following modern standards.
-### Configuration
-
-- **pydantic** (v2.x): Data validation (available but optional)
-- **commitizen** (v4.x): Conventional commits and version management
-- **pre-commit** (v4.x): Git hooks for automated checks
-### Development
-
-- **safety** (v3.x): Dependency vulnerability scanning
-- **bandit** (v1.8.x): Security linting
-### Security
-
-- **pydocstyle** (v6.x): Docstring style enforcement (reST/PEP 257)
-- **pytest-cov** (v7.x): Coverage reporting
-- **pytest** (v9.x): Testing framework
-### Testing & Quality
-
-- **ty** (v0.0.4): Type checking (Rust-based, Pyright-compatible)
-- **ruff** (v0.8.x): Linting and formatting (79 char line length)
-- **uv** (latest): Package manager and virtual environment management
-### Core Tools (Astral Ecosystem)
-
-## Technology Stack
-
-```
-└── uv.lock                    # Dependency lock file
-├── setup_template.sh          # Template initialization script
-├── README.md                  # Main documentation
-├── pyproject.toml             # Central configuration
-├── Makefile                   # Convenient command shortcuts
-├── LICENSE                    # MIT License
-├── CONTRIBUTING.md            # Contribution guidelines
-├── .python-version            # Python 3.11
-├── .pre-commit-config.yaml    # Pre-commit hooks configuration
-├── .gitignore                 # Comprehensive Python gitignore
-├── .editorconfig              # Editor consistency
-│   └── test_example_module.py
-│   ├── test_example.py
-│   ├── __init__.py
-├── test/                      # Test files (separate from src)
-│   └── py.typed               # PEP 561 marker
-│   ├── example.py             # Example with reST docstrings
-│   ├── __init__.py            # Package init with __version__
-├── src/template/              # Source code (src layout)
-│   └── FOLLOW_UP.md           # Implementation details
-│   ├── CHANGES_COMPLETE.md    # Historical changes
-│   ├── versioning.md          # Conventional commits guide
-│   ├── type-checking.md       # ty usage guide
-│   ├── SETUP_SUMMARY.md       # What's configured
-│   ├── TEMPLATE_USAGE.md      # How to use this template
-│   ├── README.md              # Documentation index
-├── docs/                      # All documentation
-│   └── ci.yml                 # Multi-platform testing (Python 3.11-3.13)
-├── .github/workflows/         # CI/CD workflows
-├── .copilot/                  # Project context for AI assistants
-template/
-```
-
-## Project Structure
-
-7. **Per-Project Decisions**: No opinionated choices like PyPI auto-publishing
-6. **Security**: Built-in scanning with bandit and safety
-5. **Documentation**: reStructuredText (reST) format for Sphinx compatibility
-4. **Reproducible Builds**: uv.lock file for exact dependency versions
-3. **Conventional Commits**: Automated versioning via commitizen
-2. **Strict by Default**: Type checking, linting, docstring enforcement enabled
-1. **Astral Ecosystem First**: Leverage fast, Rust-based tools (uv, ruff, ty)
-
-## Key Philosophy
-
-- Projects requiring Python 3.11+ with modern type checking and tooling
-- Teams wanting a standardized, opinionated starting point
-- Python developers starting new projects (libraries, CLI applications, web applications)
-
-## Target Audience
-
-This is a comprehensive Python project template designed to provide a production-ready foundation for new Python projects. It incorporates modern tooling from the Astral ecosystem (uv, ruff, ty) along with best practices for testing, documentation, and version management.
+December 19, 2025
 
 ## Project Purpose
 
+This is a comprehensive Python project template designed to provide a production-ready foundation for new Python projects. It incorporates modern tooling from the Astral ecosystem (uv, ruff, ty) along with best practices for testing, documentation, and version management.
+
+## Target Audience
+
+- Python developers starting new projects (libraries, CLI applications, web applications)
+- Teams wanting a standardized, opinionated starting point
+- Projects requiring Python 3.11+ with modern type checking and tooling
+-
+## Key Philosophy
+
+1. **Astral Ecosystem First**: Leverage fast, Rust-based tools (uv, ruff, ty)
+2. **Strict by Default**: Type checking, linting, docstring enforcement enabled
+3. **Conventional Commits**: Automated versioning via commitizen
+4. **Reproducible Builds**: uv.lock file for exact dependency versions
+5. **Documentation**: reStructuredText (reST) format for Sphinx compatibility
+6. **Security**: Built-in scanning with bandit and safety
+
+## Project Structure
+
+```
+template/
+├── .copilot/                  # Project context for AI assistants
+├── .github/workflows/          # CI/CD workflows
+│   └── ci.yml                 # Multi-platform testing (Python 3.11-3.13)
+├── docs/                      # All documentation (organized)
+│   ├── rest-docstrings.md     # Conventional commits guide
+│   ├── type-checking.md       # ty usage guide
+│   ├── versioning.md          # Conventional commits guide
+│   ├── guides/                # How-to guides and references
+│   └── changes/               # Change history and summaries
+├── src/template/              # Source code (src layout)
+│   ├── __init__.py            # Package init with __version__
+│   ├── example.py             # Example with reST docstrings
+│   └── py.typed               # PEP 561 marker
+├── test/                      # Test files (separate from src)
+│   ├── __init__.py
+│   ├── test_example.py
+│   └── test_example_module.py
+├── .editorconfig               # Editor consistency
+├── .gitignore                 # Comprehensive Python gitignore
+├── .pre-commit-config.yaml     # Pre-commit hooks configuration
+├── .python-version            # Python 3.11
+├── CONTRIBUTING.md            # Contribution guidelines
+├── LICENSE                    # License
+├── Makefile                    # Convenient command shortcuts
+├── pyproject.toml             # Central configuration
+├── README.md                  # Main documentation
+└── uv.lock                    # Dependency lock file
+```
+
+## Technology Stack
+
+### Core Tools (Astral Ecosystem)
+
+- **uv** (latest): Package manager and virtual environment management
+- **ruff** (v0.8.x): Linting and formatting (79 char line length)
+- **ty** (v0.0.4): Type checking (Rust-based, Pyright-compatible)
+-
+### Testing & Quality
+
+- **pytest** (v9.x): Testing framework
+- **pytest-cov** (v7.x): Coverage reporting
+- **pydocstyle** (v6.x): Docstring style enforcement (reST/PEP 257)
+
+### Security
+
+- **bandit** (v1.8.x): Security linting
+- **safety** (v3.x): Dependency vulnerability scanning
+
+### Development
+
+- **pre-commit** (v4.x): Git hooks for automated checks
+- **commitizen** (v4.x): Conventional commits and version management
+- **pydantic** (v2.x): Data validation (available but optional)
+
+### Configuration
+
+All tools configured in `pyproject.toml` following modern standards.
+
+## Configuration Highlights
+
+### pyproject.toml
+
+- Python 3.11+ required
+- Version constraints: `>=X.Y.Z,<NEXT_MAJOR.0.0`
+- All dev dependencies with upper bounds to prevent breaking changes
+- Comprehensive tool configurations (ruff, ty/pyright, pytest, bandit, pydocstyle, commitizen)
+
+### Ruff Configuration
+
+- Line length: 79 characters (PEP 8 strict)
+- Target: Python 3.11
+- Rule sets: E, W, F, I (isort), B, C4, UP, ARG, SIM, PL, RUF, D (pydocstyle)
+- Relaxed rules for test files
+- Format: double quotes, spaces, auto line endings
+
+### Type Checking (ty)
+
+- Configured to check src/ directory
+
+### Testing (pytest)
+
+- Test path: test/
+- Coverage for src/template/
+- Reports: terminal, HTML, XML
+- Strict markers and config
+
+### Docstrings (pydocstyle + ruff)
+
+- Convention: PEP 257
+- Format: reStructuredText (reST)
+- Sphinx-compatible
+- Enforced by both ruff (D rules) and pydocstyle
+
+### Pre-commit Hooks
+
+1. Trailing whitespace removal
+2. End-of-file fixing
+3. YAML validation
+4. Large file checking
+5. TOML validation
+6. Merge conflict detection
+7. Debug statement detection
+8. Ruff linting (with auto-fix)
+9. Ruff formatting
+10. ty type checking
+11. Bandit security scanning
+12. Pytest execution
+13. Commitizen commit message validation (commit-msg hook)
+
+### Conventional Commits (commitizen)
+
+- Format: `<type>[scope]: <description>`
+- Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore
+- Version bumping: feat → MINOR, fix → PATCH, BREAKING CHANGE → MAJOR
+- Auto-generates CHANGELOG.md
+- Auto-creates git tags
+
+## Makefile Commands
+- `make install` - Install dev dependencies
+- `make test` - Run pytest with coverage
+- `make lint` - Run ruff linter
+- `make format` - Format code with ruff
+- `make typecheck` - Run ty type checking
+- `make docstyle` - Check docstring style
+- `make security` - Run bandit + safety
+- `make bump` - Bump version (commitizen)
+- `make changelog` - Generate CHANGELOG.md
+- `make pre-commit` - Run all pre-commit hooks
+- `make clean` - Remove build artifacts
+
+## Version Management
+
+Uses commitizen for semantic versioning:
+- Analyzes conventional commit messages
+- Automatically determines version bump
+- Updates `pyproject.toml` and `src/template/__init__.py`
+- Generates CHANGELOG.md from commits
+- Creates annotated git tags
+
+## Docstring Style
+
+**Format**: reStructuredText (reST)
+
+Example:
+
+```python
+def function_name(param: str) -> int:
+    """Short one-line summary.
+    Longer description if needed.
+    :param param: Description of parameter.
+    :type param: str
+    :return: Description of return value.
+    :rtype: int
+    :raises ValueError: When this happens.
+    :Example:
+    >>> function_name("test")
+    42
+    """
+    return 42
+```
+
+## Important Files
+- **README.md**: Main documentation and quick start
+- **CONTRIBUTING.md**: Detailed contribution guidelines with examples
+- **pyproject.toml**: Central configuration for all tools
+- **uv.lock**: Locked dependencies for reproducible builds
+- **docs/**: All documentation organized in one place
+
+## Common Workflows
+
+### Adding Dependencies
+
+```bash
+uv pip install <package>
+uv lock  # Update lock file
+```
+
+### Running All Checks
+
+```bash
+make pre-commit
+```
+
+## Design Decisions
+1. **src/ layout**: Prevents accidental imports from working directory
+2. **79 char line length**: PEP 8 strict compliance
+3. **reST docstrings**: Sphinx compatibility and tool support
+4. **Version constraints**: Prevent breaking changes from major updates
+5. **uv.lock committed**: Reproducible builds across environments
+6. **Pre-commit hooks**: Prevent bad code from being committed
+7. **Conventional commits**: Enable automated versioning
+8. **Astral tools**: Faster, modern, Rust-based performance
+
+## Future Agent Context
+
+When working on this project:
+- Keep documentation **synchronized** with code
+- Follow **conventional commits** for all changes
+- Test changes by running `make test lint typecheck docstyle`
+- Version is managed by **commitizen** (don't manually update)
+- Lock file should be updated with: `uv lock`
 
 ## Documentation Organization for AI Agents
+
 **CRITICAL GUIDELINES**: When creating documentation, especially completion summaries:
+
 ### Root Directory Rules
+
 Only these markdown files belong in the root:
 - `README.md` - Main project documentation
-- `CONTRIBUTING.md` - Contribution guidelines  
+- `CONTRIBUTING.md` - Contribution guidelines
 - `LICENSE` - Project license
+
 ### docs/ Organization
+
 All other documentation must go in `docs/` with proper subfolder organization:
+
 #### docs/ (main documentation)
+
 Core reference documents:
-- `README.md` - Documentation index (update with new docs!)
-- `TEMPLATE_USAGE.md` - How to use this template
-- `SETUP_SUMMARY.md` - What's configured
+- `rest-docstrings.md` - Docstring style guide
 - `type-checking.md`, `versioning.md` - Development guides
-- `CHANGES_COMPLETE.md`, `FOLLOW_UP.md` - Historical reference
+- `versioning.md` - Versioning guide
+
 #### docs/guides/ (how-to and references)
-- Style guides (e.g., `REST_DOCSTRINGS.md`)
+
 - Implementation guides
 - Best practices documents
 - Tutorial content
+-
 #### docs/changes/ (change history)
+
 - Version update summaries
-- Migration guides  
+- Migration guides
 - Change documentation
 - Completion summaries from AI sessions
+
 #### docs/{task-name}/ (task-specific)
+
 For complex tasks, create dedicated subfolders:
+
 ```
 docs/security-audit-2025-12/
 ├── README.md           # Overview
@@ -334,16 +276,19 @@ docs/security-audit-2025-12/
 ├── implementation.md   # How it was done
 └── testing.md          # Verification
 ```
+
 ### Guidelines for Creating Documentation
+
 1. **Never create .md files in root** (except the 3 standard ones)
 2. **Always use appropriate subfolder** based on content type
 3. **Create task-specific folders** for complex work
-4. **Update docs/README.md** with links to new docs
-5. **Use descriptive folder names** with dates (e.g., `performance-2025-12`)
-6. **Organize by purpose** not document type
-7. **Keep navigation clear** with README.md in each subfolder
+4. **Use descriptive folder names** with dates (e.g., `performance-2025-12`)
+5. **Organize by purpose** not document type
+
 ### Task-Specific Documentation Pattern
+
 When completing a task:
+
 ```
 docs/{task-name}/
 ├── README.md           # Summary and overview
@@ -352,10 +297,14 @@ docs/{task-name}/
 ├── testing.md          # Testing approach
 └── migration.md        # How to adopt changes (if applicable)
 ```
+
 ### Common Task Folder Examples
+- `docs/Jira-1234-feature-addition/` - Specific feature work
+- `docs/Issue-5678-description/` - Github issue work
 - `docs/security-audit-YYYY-MM/` - Security work
 - `docs/performance-optimization-YYYY-MM/` - Performance improvements
 - `docs/feature-{name}/` - New feature documentation
 - `docs/refactor-{component}/` - Refactoring documentation
 - `docs/upgrade-{tool}/` - Tool upgrade documentation
+
 **REMEMBER**: Clean documentation structure makes the project professional and maintainable!

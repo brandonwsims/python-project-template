@@ -67,15 +67,7 @@
 - Easy to track dependency changes
 - Standard for applications (less important for libraries)
 
-### 9. No PyPI Auto-Publishing
-**Decision**: Removed publish.yml workflow from template
-**Rationale**:
-- Security decision best made per-project
-- Different projects have different requirements
-- API token management varies by team
-- Easy to add if needed
-
-### 10. Separate test/ Directory
+### 9. Separate test/ Directory
 **Decision**: `test/` separate from `src/`, not `src/package/tests/`
 **Rationale**:
 - Tests aren't part of the package
@@ -169,7 +161,6 @@
 ### What's Excluded
 - safety (too slow for pre-commit)
 - Heavy linting (covered by ruff)
-- Integration tests (too slow)
 
 ### Rationale
 - Fast enough to not annoy developers
@@ -195,14 +186,6 @@
 - Ensure compatibility
 - Follow Python support cycle
 
-### No Auto-Deploy
-**Decision**: CI only tests, doesn't deploy
-**Rationale**:
-- Deployment strategy varies by project
-- Security tokens management
-- Different teams have different needs
-- Easy to add per-project
-
 ## Security Decisions
 
 ### Bandit Configuration
@@ -218,7 +201,6 @@
 ### No Credentials in Template
 - **No API tokens**: User-provided
 - **No .env example**: Project-specific
-- **No secrets management**: Out of scope
 
 ## Development Experience
 
@@ -229,14 +211,6 @@
 - Self-documenting (make help)
 - Familiar to developers
 - Simple syntax
-
-### setup_template.sh
-**Decision**: Shell script for initialization
-**Rationale**:
-- One-time operation
-- Interactive prompts needed
-- Standard Unix tool
-- Works on all target platforms
 
 ## Documentation Strategy
 
@@ -266,14 +240,6 @@
 
 ## Type System Decisions
 
-### Strict Mode Default
-**Decision**: ty/pyright in strict mode
-**Rationale**:
-- Catch more errors
-- Better IDE support
-- Forces good practices
-- Can be relaxed per-file
-
 ### py.typed Marker
 **Decision**: Include PEP 561 marker
 **Rationale**:
@@ -292,29 +258,15 @@
 
 ## Dependency Management
 
-### Minimal Runtime Dependencies
-**Decision**: No runtime deps in template
+### Use uv Only
+**Decision**: No poetry/pipenv
 **Rationale**:
-- Clean slate for users
-- No opinionated choices
-- Smaller attack surface
-- Faster installs
-
-### Comprehensive Dev Dependencies
-**Decision**: Include all dev tools
-**Rationale**:
-- Complete development experience
-- Nothing additional to install
-- Consistent across projects
-- Ready to code
-
-### Optional pydantic
-**Decision**: Include but don't require
-**Rationale**:
-- Commonly needed
-- Examples can use it
-- Version pinned
-- No runtime cost if unused
+- Performance
+- Simplicity
+- Modern features
+- Growing ecosystem
+- Less overhead
+- Single tool for everything
 
 ## Future-Proofing
 
@@ -342,27 +294,6 @@
 - Standard practice
 - Automated via commitizen
 
-## Excluded Patterns
-
-### No Docker
-**Rationale**: Too project-specific, adds complexity
-
-### No Logging Config
-**Rationale**: Varies by project type (library vs app)
-
-### No Database
-**Rationale**: Not all projects need it
-
-### No Web Framework
-**Rationale**: Choice depends on project
-
-### No Documentation Generator Setup
-**Rationale**: Sphinx/MkDocs setup varies
-
-### No Coverage Minimum
-**Rationale**: Appropriate threshold varies
-
 ## Summary
 
 This template is opinionated where it matters (tooling, standards) and flexible where it should be (project specifics). Every decision is made to provide the best starting point for professional Python projects in 2025 and beyond.
-
