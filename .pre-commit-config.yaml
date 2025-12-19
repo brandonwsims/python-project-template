@@ -21,12 +21,13 @@ repos:
 
   - repo: local
     hooks:
-      - id: pyright
-        name: pyright
-        entry: pyright
+      - id: ty
+        name: ty
+        entry: ty
         language: system
         types: [python]
         pass_filenames: false
+        args: ["check"]
 
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v3.29.1

@@ -195,7 +195,7 @@ When creating a new project from this template:
 
 Your Python project template now has:
 - ✅ All your original features (uv, ruff, pytest, bandit, safety, pydantic, etc.)
-- ✅ Pyright instead of mypy (faster, modern type checking)
+- ✅ ty instead of mypy (blazing-fast Rust-based type checking from Astral)
 - ✅ Conventional commits enforced (commitizen)
 - ✅ Automated version bumping and changelog generation
 - ✅ Organized documentation in /docs folder

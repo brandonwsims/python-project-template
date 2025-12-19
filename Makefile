@@ -25,7 +25,7 @@ format:
 	ruff check --fix .
 
 typecheck:
-	pyright
+	ty check
 
 security:
 	@echo "Running Bandit security scan..."

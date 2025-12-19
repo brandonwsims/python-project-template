@@ -164,7 +164,7 @@ If you get errors about missing type stubs for third-party libraries:
 uv pip install types-requests
 ```
 
-Or configure pyright to ignore them:
+Or configure ty to ignore them (via pyright configuration):
 
 ```toml
 [tool.pyright]
