@@ -101,21 +101,13 @@ git cz
 
 2. **Create a virtual environment**:
    ```bash
-   python -m venv .venv
+   uv venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
 3. **Install dependencies**:
    ```bash
    make install
-   # or
-   uv pip install -e ".[dev]"
-   ```
-
-4. **Install pre-commit hooks**:
-   ```bash
-   pre-commit install
-   pre-commit install --hook-type commit-msg
    ```
 
 ## Development Workflow
@@ -125,22 +117,13 @@ git cz
 ```bash
 # Run all tests
 make test
-
-# Run specific test file
-pytest test/test_specific.py
-
-# Run with verbose output
-pytest -v
-
-# Run with coverage report
-pytest --cov
 ```
 
 ### Code Quality
 
 ```bash
 # Run all checks
-make lint format typecheck security
+make pre-commit
 
 # Or individually
 make lint        # Ruff linting
@@ -160,15 +143,13 @@ Pre-commit hooks run automatically on `git commit`. They check:
 - Debug statements
 - Ruff linting and formatting
 - ty type checking
-- Bandit security scanning
+- Bandit security scanning (Safety excluded for pre-commit due to performance)
 - Conventional commit format
 - Tests
 
 To run manually:
 ```bash
 make pre-commit
-# or
-pre-commit run --all-files
 ```
 
 ## Version Management
@@ -222,7 +203,7 @@ make changelog
 - **Line length**: 79 characters (enforced by ruff)
 - **Import sorting**: Automatic via ruff (isort rules)
 - **Type hints**: Required for all functions (enforced by ty)
-- **Docstrings**: Required for public functions and classes
+- **Docstrings**: Required for public functions and classes (enforced by pydocstyle pep257)
 - **Testing**: Aim for >80% code coverage
 
 ### Code Organization
@@ -236,7 +217,6 @@ project/
 ├── test/               # Test files
 │   ├── __init__.py
 │   └── test_*.py
-└── docs/               # Documentation
 ```
 
 ### Type Hints
@@ -246,12 +226,10 @@ def process_data(data: list[str], max_items: int = 10) -> dict[str, int]:
     """
     Process input data and return statistics.
 
-    Args:
-        data: List of strings to process
-        max_items: Maximum number of items to process
+    :param data: List of strings to process
+    :param max_items: Maximum number of items to process
 
-    Returns:
-        Dictionary with processing statistics
+    :return: Dictionary with processing statistics
     """
     # Implementation
     return {"processed": len(data)}
