@@ -94,12 +94,6 @@ quote-style = "double"
 indent-style = "space"
 line-ending = "auto"
 
-[tool.ty.rules]
-root = "./src"
-
-[tool.ty.src]
-exclude = ["**/__pycache__", ".venv", "build", "dist"]
-
 [tool.bandit]
 exclude_dirs = ["test", ".venv", "build", "dist"]
 skips = ["B101"]
