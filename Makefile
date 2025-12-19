@@ -15,7 +15,6 @@ help:
 
 install:
 	uv pip install ".[dev]"
-	uv pip install
 	pre-commit install
 
 test:
