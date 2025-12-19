@@ -7,7 +7,10 @@ help:
 	@echo "  make lint        - Run ruff linter"
 	@echo "  make format      - Format code with ruff"
 	@echo "  make typecheck   - Run pyright type checker"
+	@echo "  make security    - Run security checks with Bandit and Safety"
 	@echo "  make pre-commit  - Run pre-commit hooks on all files"
+	@echo "  make bump        - Bump version using commitizen"
+	@echo "  make changelog   - Generate changelog using commitizen"
 	@echo "  make clean       - Remove build artifacts and cache"
 
 install:
